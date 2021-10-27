@@ -76,7 +76,7 @@ export default function CarsList() {
       <div style={{ display: "flex", flexWrap: "wrap", marginBottom: "10px" }}>
         {loading && "Loading cars..."}
         {!loading && !cars && <h2>No cars here</h2>}
-        {!loading && cars && cars.length == 0 ? <h2>No cars here</h2> : null}
+        {!loading && cars && cars.length === 0 ? <h2>No cars here</h2> : null}
         {!loading &&
           cars &&
           cars.length > 0 &&

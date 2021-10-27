@@ -3,16 +3,22 @@ import "./CarModal.css";
 export function CarModal({ car, closeModal }) {
   return (
     <div className="modal">
-      <a className="modalBackdrop" onClick={closeModal}></a>
+      {/* eslint-disable-next-line */}
+      <a
+        aria-hidden="false"
+        href="!#"
+        className="modalBackdrop"
+        onClick={closeModal}
+      ></a>
       <div className="modalBody">
         <span style={{ display: "flex", justifyContent: "flex-end" }}>
-          <a onClick={closeModal} style={{ cursor: "pointer" }}>
+          <a href="!#" onClick={closeModal} style={{ cursor: "pointer" }}>
             X
           </a>
         </span>
         <div className="modalCarDetails">
           <h1>{car?.make}</h1>
-          <img className="modalImage" src={car?.photo} />
+          <img alt=" " className="modalImage" src={car?.photo} />
           <div style={{ display: "flex", width: "100%" }}>
             <div className="modalCarMiniDetails">
               <span>Price</span>
