@@ -5,7 +5,7 @@ import CarCard from "../../components/CarCard";
 import Dropdown from "../../components/Dropdown";
 import SortButton from "../../components/SortButton";
 import { CarModal } from "../../components/CarModal";
-
+// import data from "../../test_data/data";
 const API = "https://6157228e8f7ea600179850e4.mockapi.io/api/vehicles";
 
 export default function CarsList() {
@@ -95,7 +95,7 @@ export default function CarsList() {
                 default:
                   break;
               }
-              return valueA - valueB;
+              return valueB - valueA;
             })
             .map((car, i) => {
               return <CarCard car={car} key={i} clickFn={setActiveCarFn} />;

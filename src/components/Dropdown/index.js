@@ -1,14 +1,18 @@
 import { useEffect } from "react";
 import "./Dropdown.css";
 
-export default function Dropdown({ clickFn, dropdownVisibleFn, showDropdown }) {
+export default function Dropdown({
+  clickFn,
+  dropdownVisibleFn,
+  dropdownVisible,
+}) {
   useEffect(() => {
-    if (showDropdown) {
+    if (dropdownVisible) {
       window.addEventListener("click", globalClickListener);
     } else window.removeEventListener("click", globalClickListener);
 
     return () => window.removeEventListener("click", globalClickListener);
-  }, [showDropdown]);
+  }, [dropdownVisible]);
 
   function globalClickListener(e) {
     dropdownVisibleFn(false);
