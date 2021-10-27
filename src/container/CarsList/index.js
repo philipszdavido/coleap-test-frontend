@@ -13,12 +13,20 @@ export default function CarsList() {
   const [activeCar, setActiveCar] = useState();
   const [showDropdown, setShowDropdown] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [sortBy, setSortBy] = useState("range");
 
   useEffect(() => {
     async function fetchCars() {
-      const resultData = await axios.get(API);
-      setCars(resultData?.data);
+      setLoading(true);
+      try {
+        const resultData = await axios.get(API);
+        setCars(resultData?.data);
+        setLoading(false);
+      } catch (error) {
+        setCars(null);
+        setLoading(false);
+      }
     }
     fetchCars();
   }, [cars]);
@@ -66,26 +74,30 @@ export default function CarsList() {
       </div>
 
       <div style={{ display: "flex", flexWrap: "wrap", marginBottom: "10px" }}>
-        {cars
-          .sort(function (a, b) {
-            let valueA, valueB;
-            switch (sortBy) {
-              case "range":
-                valueA = +a.range.distance;
-                valueB = +b.range.distance;
-                break;
-              case "price":
-                valueA = parseInt(a.price);
-                valueB = parseInt(b.price);
-                break;
-              default:
-                break;
-            }
-            return valueA - valueB;
-          })
-          .map((car, i) => {
-            return <CarCard car={car} key={i} clickFn={setActiveCarFn} />;
-          })}
+        {loading && "Loading cars..."}
+        {!loading && !cars && <h2>No cars here</h2>}
+        {cars && cars.length == 0 ? <h2>No cars here</h2> : null}
+        {cars &&
+          cars
+            .sort(function (a, b) {
+              let valueA, valueB;
+              switch (sortBy) {
+                case "range":
+                  valueA = +a.range.distance;
+                  valueB = +b.range.distance;
+                  break;
+                case "price":
+                  valueA = parseInt(a.price);
+                  valueB = parseInt(b.price);
+                  break;
+                default:
+                  break;
+              }
+              return valueA - valueB;
+            })
+            .map((car, i) => {
+              return <CarCard car={car} key={i} clickFn={setActiveCarFn} />;
+            })}
       </div>
       {showModal ? (
         <CarModal car={activeCar} closeModal={closeModalFn} />

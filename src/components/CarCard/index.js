@@ -2,7 +2,7 @@ import "./CarCard.css";
 
 export default function CarCard({ car, clickFn }) {
   return (
-    <div className="carCard" onClick={(e) => clickFn(car)}>
+    <a className="carCard" onClick={(e) => clickFn(car)}>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <img src={`${car.photo}`} className="carImage" alt="" />
       </div>
@@ -23,6 +23,6 @@ export default function CarCard({ car, clickFn }) {
           </b>
         </div>
       </div>
-    </div>
+    </a>
   );
 }

@@ -13,7 +13,7 @@
   transform: translate(0, 0);
   transition-duration: 5s;
 
-  overflow: auto;
+  overflow: hidden;
 }
 
 .modalBackdrop {
@@ -77,4 +77,53 @@
 
 .modalCarMiniDetails h2 {
   margin-top: unset;
+}
+
+.modalCarMiniDetails span,
+h2 {
+  width: 100%;
+  text-align: center;
+}
+
+.carColor {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.carColor span {
+  padding: 0.3rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 1px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  height: 20px;
+}
+
+.carColor h2 {
+  width: unset;
+  margin-left: 9%;
+}
+
+@media screen and (max-width: 900px) and (min-width: 300px) {
+  .modalBody {
+    width: 95%;
+    left: -2%;
+    padding: 4px;
+    top: 3%;
+    margin: 0.65rem;
+  }
+
+  .modalImage {
+    width: 80%;
+  }
+
+  .modalCarMiniDetails h2 {
+    font-size: 1rem;
+  }
+
+  .carColor h2 {
+    font-size: 1rem;
+  }
 }

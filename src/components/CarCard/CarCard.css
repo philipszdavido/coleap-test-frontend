@@ -56,3 +56,9 @@
 .carDetails span:nth-child(1) {
   margin-right: 2px;
 }
+
+@media screen and (max-width: 900px) and (min-width: 300px) {
+  .carCard {
+    width: 95%;
+  }
+}
