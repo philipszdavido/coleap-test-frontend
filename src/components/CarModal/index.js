@@ -5,6 +5,11 @@ export function CarModal({ car, closeModal }) {
     <div className="modal">
       <div className="modalBackdrop" onClick={closeModal}></div>
       <div className="modalBody">
+        <span style={{ display: "flex", justifyContent: "flex-end" }}>
+          <a onClick={closeModal} style={{ cursor: "pointer" }}>
+            X
+          </a>
+        </span>
         <div className="modalCarDetails">
           <h1>{car?.make}</h1>
           <img className="modalImage" src={car?.photo} />
